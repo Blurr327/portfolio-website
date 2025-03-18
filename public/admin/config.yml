@@ -1,0 +1,147 @@
+backend:
+  name: github
+  repo: Blurr327/jci-rabat
+  branch: main # Branch to update (optional; defaults to master)
+media_folder: public/img
+public_folder: img
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/pages/home.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "markdown" }
+          - label: "Stats"
+            name: "stats"
+            widget: "object"
+            fields:
+              - { label: "Member count", name: "member_count", widget: number }
+              - { label: "Years", name: "years", widget: number }
+              - {
+                  label: "Project count",
+                  name: "project_count",
+                  widget: number,
+                }
+              - {
+                  label: "Partner count",
+                  name: "partner_count",
+                  widget: number,
+                }
+          - {
+              label: "Images",
+              name: "images",
+              widget: image,
+              allow_multiple: true,
+            }
+          - { label: "First Text", name: "first_text", widget: "markdown" }
+          - { label: "Second Text", name: "second_text", widget: "markdown" }
+      - label: "Join Page"
+        name: "join"
+        file: "content/pages/join.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - {
+              label: "Enable form",
+              name: "enable_form",
+              widget: "boolean",
+              default: "true",
+            }
+      - label: "Contact Page"
+        name: "contact"
+        file: "content/pages/contact.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+  - name: "config"
+    label: "Config"
+    files:
+      - label: "Blog"
+        name: "blog_config"
+        file: "content/blog/config.md"
+        fields:
+          - label: "Tags"
+            name: "tags"
+            widget: "list"
+            fields:
+              - { label: "Tag name", name: "tag_name", widget: "string" }
+      - name: "config_general"
+        label: "General config"
+        file: "content/config/config.md"
+        fields:
+          - label: "Tab labels"
+            name: "tab_labels"
+            widget: "object"
+            summary: "{{fields.home}},{{fields.join}}, {{fields.blog}}, {{fields.blog}}, {{fields.contact}}"
+            fields:
+              - {
+                  label: "Home tab label",
+                  name: "home",
+                  widget: "string",
+                  default: "Accueil",
+                }
+              - {
+                  label: "Join tab label",
+                  name: "join",
+                  widget: "string",
+                  default: "Adhésion",
+                }
+              - {
+                  label: "Blog tab label",
+                  name: "blog",
+                  widget: "string",
+                  default: "Blog",
+                }
+              - {
+                  label: "Contact tab label",
+                  name: "contact",
+                  widget: "string",
+                  default: "Contact",
+                }
+      - label: "Socials"
+        name: "socials"
+        widget: "list"
+        file: "content/config/socials.md"
+        fields:
+          - { label: "LinkedIn", name: "linkedIn", widget: "string" }
+          - { label: "Facebook", name: "facebook", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+          - { label: "Gmail", name: "gmail", widget: "string", default }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "content/blog/posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields for each document, usually in front matter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Featured Image",
+          required: false,
+          name: "thumbnail",
+          widget: "image",
+        }
+      - { label: "Featured Video", name: "video", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: []
+        field:
+          label: "Tag"
+          name: "tag"
+          widget: "relation"
+          collection: "config"
+          file: "blog_config"
+          search_fields: ["tags.*.tag_name"]
+          display_fields: ["tags.*.tag_name"]
+          value_field: "tags.*.tag_name"

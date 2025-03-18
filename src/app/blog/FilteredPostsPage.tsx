@@ -1,0 +1,79 @@
+import Container from "@/components/Container";
+import Carousel from "@/components/Carousel";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import PostsList from "@/app/blog/PostsList";
+import Pagination from "@/components/Pagination";
+import TagPicker from "@/components/TagPicker";
+import {
+  ArticleWithSlug,
+  getArticles,
+  getBlogPagesCount,
+  getBlogConfig,
+  POSTS_PER_PAGE,
+} from "@/lib/blog";
+
+export default async function FilteredPostsPage({
+  tag,
+  pageNum = 1,
+}: {
+  tag?: string;
+  pageNum: number;
+}) {
+  const filter = tag
+    ? (article: ArticleWithSlug) => article.tags.includes(tag)
+    : () => true;
+
+  const selectedArticles = await getArticles(filter, [
+    POSTS_PER_PAGE * (pageNum - 1),
+    POSTS_PER_PAGE * pageNum,
+  ]);
+
+  const pageCount = await getBlogPagesCount(filter);
+
+  const images: string[] = (
+    await getArticles(
+      (article) => filter(article) && article.thumbnail !== undefined
+    )
+  )
+    .slice(0, 4)
+    .map((article) => "/" + article.thumbnail);
+
+  const blogConfig = await getBlogConfig();
+
+  return (
+    <Container>
+      <div className="flex flex-col gap-6 md:grid md:grid-cols-5">
+        <Carousel className="md:hidden md:col-span-3" images={images} />
+        <div className="flex flex-col justify-center md:col-span-2">
+          <h1 className=" text-4xl font-bold tracking-tight text-shadow text-zinc-900 sm:text-5xl md:mb-10">
+            Restez informé de tout ce que nous faisons !
+          </h1>
+          <p className="mt-6 text-base text-zinc-900">
+            Découvrez les derniers articles de notre blog et restez à jour sur
+            nos événements récents et actualités.
+          </p>
+        </div>
+        <Carousel className="hidden md:block md:col-span-3" images={images} />
+      </div>
+
+      <div className="flex justify-center">
+        <ChevronDownIcon className="animate-bounce duration-1000 w-10 h-10 mt-4 mb-10 md:my-12" />
+      </div>
+
+      <TagPicker tags={blogConfig.tags} selectedTag={tag} />
+
+      <PostsList articles={selectedArticles} />
+
+      <Pagination
+        id="blogPagination"
+        count={pageCount}
+        current={pageNum}
+        getPageLink={(i) =>
+          tag !== undefined
+            ? `/blog/tag/${tag}/page/${i}#blogPagination`
+            : `/blog/page/${i}#blogPagination`
+        }
+      />
+    </Container>
+  );
+}
