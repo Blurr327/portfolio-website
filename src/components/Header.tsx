@@ -105,7 +105,7 @@ export default function Header({
       <Link href={"/"}>
         <Image
           src="/img/sig.png"
-          alt="Logo de la JCI de Rabat"
+          alt="Initials"
           className="object-cover mx-4 my-2"
           width="100"
           height="100"

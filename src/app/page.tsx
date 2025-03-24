@@ -13,7 +13,7 @@ export default async function Home() {
 
   const images: string[] = articles
     .filter((article) => article.thumbnail !== undefined)
-    .map((article) => "/" + article.thumbnail);
+    .map((article) => article.thumbnail);
 
   return (
     <>
@@ -32,7 +32,7 @@ export default async function Home() {
               <Markdown remarkPlugins={[remarkGfm]}>{data.intro}</Markdown>
             </div>
             <Image
-              src={"/" + data.images[0]}
+              src={data.images[0]}
               alt="JCI GROUP"
               width="700"
               height="500"
@@ -46,7 +46,7 @@ export default async function Home() {
           </h1>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Image
-              src={"/" + data.images[1]}
+              src={data.images[1]}
               alt="JCI GROUP"
               width="700"
               height="500"
@@ -58,7 +58,7 @@ export default async function Home() {
           </div>
           <div className="flex flex-wrap items-center justify-center">
             <Image
-              src={"/" + data.images[2]}
+              src={data.images[2]}
               alt="JCI GROUP"
               width="700"
               height="500"
