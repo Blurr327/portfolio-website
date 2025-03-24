@@ -33,7 +33,7 @@ export default async function Home() {
             </div>
             <Image
               src={"/" + data.images[0]}
-              alt="JCI GROUP"
+              alt="Project Picture"
               width="700"
               height="500"
               className="h-[250px] md:h-[400px] rounded-3xl object-cover"
@@ -47,7 +47,7 @@ export default async function Home() {
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Image
               src={"/" + data.images[1]}
-              alt="JCI GROUP"
+              alt="Project Picture"
               width="700"
               height="500"
               className="h-[250px] md:h-[400px] rounded-3xl object-cover"
@@ -59,7 +59,7 @@ export default async function Home() {
           <div className="flex flex-wrap items-center justify-center">
             <Image
               src={"/" + data.images[2]}
-              alt="JCI GROUP"
+              alt="Project Picture"
               width="700"
               height="500"
               className="h-[250px] md:h-[400px] rounded-3xl object-cover"
