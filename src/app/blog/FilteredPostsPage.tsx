@@ -35,7 +35,7 @@ export default async function FilteredPostsPage({
     )
   )
     .slice(0, 4)
-    .map((article) => "/portfolio-website" + article.thumbnail);
+    .map((article) => "/portfolio-website/" + article.thumbnail);
 
   const blogConfig = await getBlogConfig();
 
