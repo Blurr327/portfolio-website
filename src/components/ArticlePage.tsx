@@ -36,7 +36,7 @@ export default function ArticlePage({ article }: { article: ArticleWithSlug }) {
                   index < 5 && (
                     <p
                       key={index}
-                      className="p-2 bg-orange-400 text-white text-sm rounded-3xl m-0"
+                      className="p-2 bg-[#CCC7BF] text-white text-sm rounded-3xl m-0"
                     >
                       {tag}
                     </p>
@@ -48,7 +48,7 @@ export default function ArticlePage({ article }: { article: ArticleWithSlug }) {
           <ChevronLeftIcon className="stroke-current inline" /> go back
         </Link>
       </div>
-      <div className="col-span-3">
+      <div className="col-span-4">
         {article.video && (
           <iframe
             src={
@@ -60,14 +60,6 @@ export default function ArticlePage({ article }: { article: ArticleWithSlug }) {
         )}
         <Markdown remarkPlugins={[remarkGfm]}>{article.content}</Markdown>
       </div>
-      {/* Desktop Image */}
-      <Image
-        src={"/" + article.thumbnail}
-        alt="Thumbnail"
-        className="mt-1 hidden md:flex object-cover w-full sticky top-5 h-[95vh] m-4 col-span-2 rounded-3xl border border-black flex items-center justify-center relative z-10 text-sm text-zinc-400"
-        width="200"
-        height="200"
-      />
       {/* Mobile Sharing */}
       <div className="md:hidden flex flex-col gap-12">
         <ShareButtons className="flex-wrap" />

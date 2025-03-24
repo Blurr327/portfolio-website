@@ -29,7 +29,7 @@ export function Card<T extends ElementType = "div">({
     <Component
       className={clsx(
         className,
-        "group relative flex flex-col items-center md:items-start",
+        "group relative flex flex-col items-center md:items-start"
       )}
     >
       {children}
@@ -74,14 +74,18 @@ Card.Description = function CardDescription({
 }: {
   children: ReactNode;
 }) {
-  return <p className="relative z-10 mt-2 text-sm text-zinc-600 break-words">{children}</p>;
+  return (
+    <p className="relative z-10 mt-2 text-sm text-zinc-600 break-words">
+      {children}
+    </p>
+  );
 };
 
 Card.Cta = function CardCta({ children }: { children: ReactNode }) {
   return (
     <div
       aria-hidden="true"
-      className="relative z-10 mt-4 flex items-end text-sm md:text-md font-medium text-orange-500"
+      className="relative z-10 mt-4 flex items-end text-sm md:text-md font-medium text-[#31393C]"
     >
       {children}
       <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
@@ -105,7 +109,7 @@ Card.Eyebrow = function CardEyebrow<T extends ElementType = "img">({
       className={clsx(
         className,
         "relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400",
-        decorate && "pl-3.5",
+        decorate && "pl-3.5"
       )}
       {...props}
     />

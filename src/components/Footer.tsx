@@ -4,10 +4,11 @@ import Socials from "./Socials";
 
 const Footer = ({ socials }: { socials: SocialsData }) => {
   return (
-    <footer className="px-10 border-t border-t-zinc-500 py-10 flex flex-col md:flex-row items-center justify-between">
+    <footer className="px-10 border-t grow-0 border-t-zinc-500 py-10 flex md:flex-row items-center justify-between">
       <Socials socials={socials} size={32} className="flex flex-wrap gap-4" />
       <p className="text-sm text-zinc-500 mt-4 md:mt-0">
-        &copy; {new Date().getFullYear()} JCI Rabat. All rights reserved.
+        &copy; {new Date().getFullYear()} BEN EL MOSTAPHA Mohamed. All rights
+        reserved.
       </p>
     </footer>
   );

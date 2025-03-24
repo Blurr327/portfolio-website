@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fira_Code } from "next/font/google";
 import Layout from "@/components/GeneralLayout";
 import "./globals.css";
 import { ReactNode } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const fira_code = Fira_Code({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "JCI Rabat",
-  description: "Le site officiel de la JCI de Rabat.",
+  title: "BM",
+  description: "Le site officiel de Mohamed BEN EL MOSTAPHA.",
 };
 
 export default function RootLayout({
@@ -20,8 +20,8 @@ export default function RootLayout({
     <html lang="fr" className="overscroll-none">
       <body
         className={
-          inter.className +
-          " bg-gradient-to-br from-gray-100 via-blue-100 to-indigo-100 break-words"
+          fira_code.className +
+          " bg-gradient-to-br from-[#EDEEEB] via-[#FFFFFF] to-[#CCC7BF] break-words"
         }
       >
         <div className="flex w-full">

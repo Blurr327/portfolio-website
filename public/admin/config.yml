@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Blurr327/jci-rabat
+  repo: Blurr327/portfolio
   branch: main # Branch to update (optional; defaults to master)
 media_folder: public/img
 public_folder: img

@@ -9,7 +9,7 @@ export default function Container({
   className?: string;
 }) {
   return (
-    <div className={clsx("px-8 py-8 md:px-24 md:py-20", className)}>
+    <div className={clsx("px-2 py-8 md:px-24 md:py-20 grow-1", className)}>
       {children}
     </div>
   );

@@ -25,7 +25,7 @@ function PaginationLink({
           ? "bg-blue-600 text-white"
           : isDisabled
             ? "bg-gray-500 text-white"
-            : "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700",
+            : "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700"
       )}
     >
       {children}

@@ -19,27 +19,19 @@ export default async function ContactPage() {
       {/* Socials Section */}
       <section className="w-full max-w-4xl">
         <h2 className="text-center text-2xl font-bold mb-8 text-gray-800">
-          Suivez nous
+          Mes réseaux sociaux
         </h2>
         <Socials
           socials={socials}
           size={64}
-          className="grid grid-cols-2 md:grid-cols-4 mb-8 justify-items-center gap-4 px-16"
+          className="mb-8 flex justify-center gap-12 px-16"
         />
       </section>
 
       {/* Contact Info Section */}
-      <section className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Address Card */}
-        <div className="flex flex-col items-center bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-          <MapPinned size={64} className="mb-4" />
-          <p className="text-gray-600 text-center text-lg md:text-xl max-w-[65ch] leading-relaxed">
-            {socials.address}
-          </p>
-        </div>
-
+      <section className="w-full max-w-4xl flex justify-center gap-8">
         {/* Phone Card */}
-        <div className="flex flex-col items-center bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <div className="flex flex-col items-center p-8 rounded-xl shadow-lg transition-shadow duration-300">
           <Phone size={64} className="mb-4" />
           <p className="text-gray-600 text-center text-lg md:text-xl leading-relaxed">
             {socials.phone}

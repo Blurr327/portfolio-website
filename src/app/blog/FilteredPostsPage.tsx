@@ -42,22 +42,17 @@ export default async function FilteredPostsPage({
 
   return (
     <Container>
-      <div className="flex flex-col gap-6 md:grid md:grid-cols-5">
+      <div className="flex flex-col gap-6">
         <Carousel className="md:hidden md:col-span-3" images={images} />
-        <div className="flex flex-col justify-center md:col-span-2">
-          <h1 className=" text-4xl font-bold tracking-tight text-shadow text-zinc-900 sm:text-5xl md:mb-10">
+        <div className="flex flex-col justify-center">
+          <h1 className=" text-2xl font-bold tracking-tight md:text-center text-zinc-900 sm:text-5xl md:mb-10">
             Restez informé de tout ce que nous faisons !
           </h1>
-          <p className="mt-6 text-base text-zinc-900">
+          <p className="mt-6 text-base md:text-center text-zinc-900">
             Découvrez les derniers articles de notre blog et restez à jour sur
             nos événements récents et actualités.
           </p>
         </div>
-        <Carousel className="hidden md:block md:col-span-3" images={images} />
-      </div>
-
-      <div className="flex justify-center">
-        <ChevronDownIcon className="animate-bounce duration-1000 w-10 h-10 mt-4 mb-10 md:my-12" />
       </div>
 
       <TagPicker tags={blogConfig.tags} selectedTag={tag} />

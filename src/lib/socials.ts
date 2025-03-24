@@ -3,10 +3,8 @@ import { z } from "zod";
 
 const socialsDataSchema = z.object({
   gmail: z.string(),
-  facebook: z.string(),
+  github: z.string(),
   linkedIn: z.string(),
-  instagram: z.string(),
-  address: z.string(),
   phone: z.string(),
 });
 

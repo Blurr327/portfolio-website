@@ -6,8 +6,10 @@ import { ReactNode } from "react";
 
 export default async function GeneralLayout({
   children,
+  className,
 }: {
   children: ReactNode;
+  className?: string;
 }) {
   const generalConfig = await getGeneralConfig();
   const socials = await getSocialsData();

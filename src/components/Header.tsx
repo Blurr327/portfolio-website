@@ -10,14 +10,14 @@ const NavItem = ({ href, children }: { href: string; children: ReactNode }) => {
   const pathName = usePathname();
   const isActive = pathName === href + "/" || pathName === href;
   return (
-    <li className="flex-1 h-full">
+    <li className="flex">
       <Link
         href={href}
         className={clsx(
           "relative block px-3 py-2 transition h-full flex items-center justify-center",
           isActive
-            ? "text-blue-500 border-b-blue-500 border-b-2"
-            : "hover:text-blue-500 hover:border-b-blue-500 border-b-2"
+            ? "text-[white] bg-[#3E96F4] rounded-lg"
+            : "hover:text-[white] hover:bg-[#3E96F4] rounded-lg"
         )}
       >
         {children}
@@ -33,7 +33,6 @@ const DesktopNavigation = (
     <nav {...props}>
       <ul className="flex justify-evenly items-center h-full px-3 text-l font-medium text-zinc-800">
         <NavItem href="/">{props.tab_labels.home}</NavItem>
-        <NavItem href="/join">{props.tab_labels.join}</NavItem>
         <NavItem href="/blog">{props.tab_labels.blog}</NavItem>
         <NavItem href="/contact">{props.tab_labels.contact}</NavItem>
       </ul>
@@ -88,7 +87,6 @@ const MobileNavigation = ({ tab_labels }: { tab_labels: TabLabels }) => {
           onClick={() => setIsOpen(false)}
         >
           <MobileNavItem href="/">{tab_labels.home}</MobileNavItem>
-          <MobileNavItem href="/join">{tab_labels.join}</MobileNavItem>
           <MobileNavItem href="/blog">{tab_labels.blog}</MobileNavItem>
           <MobileNavItem href="/contact">{tab_labels.contact}</MobileNavItem>
         </ul>
@@ -106,9 +104,9 @@ export default function Header({
     <header className="top-0 w-full flex justify-between items-center md:px-12 border-b border-b-zinc-500">
       <Link href={"/"}>
         <Image
-          src="/img/JCI-Rabat.png"
+          src="/img/sig.png"
           alt="Logo de la JCI de Rabat"
-          className="object-cover mx-8 my-6"
+          className="object-cover mx-4 my-2"
           width="100"
           height="100"
         />
