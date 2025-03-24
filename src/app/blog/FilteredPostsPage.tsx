@@ -1,6 +1,5 @@
 import Container from "@/components/Container";
 import Carousel from "@/components/Carousel";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
 import PostsList from "@/app/blog/PostsList";
 import Pagination from "@/components/Pagination";
 import TagPicker from "@/components/TagPicker";

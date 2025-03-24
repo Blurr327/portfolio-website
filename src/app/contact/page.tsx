@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPinned, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import Socials from "@/components/Socials";
 import { getSocialsData } from "@/lib/socials";
 import { getContactPageData } from "@/lib/contact";

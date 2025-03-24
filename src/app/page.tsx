@@ -1,7 +1,5 @@
 import Container from "@/components/Container";
 import Image from "next/image";
-import FMComponent from "@/components/FMComponent";
-import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import Carousel from "@/components/Carousel";
 import { getHomePageData } from "@/lib/home";
