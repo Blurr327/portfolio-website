@@ -50,7 +50,7 @@ export default async function Home() {
               alt="Project Picture"
               width="700"
               height="500"
-              className="h-[250px] md:h-[400px] rounded-3xl object-cover"
+              className="h-[250px] md:h-[400px] border-2 border-black rounded-3xl object-cover transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
             />
             <div className="flex-1 prose p-8">
               <Markdown>{data.first_text}</Markdown>
@@ -62,7 +62,7 @@ export default async function Home() {
               alt="Project Picture"
               width="700"
               height="500"
-              className="h-[250px] md:h-[400px] rounded-3xl object-cover"
+              className="h-[250px] md:h-[400px] border-2 border-black rounded-3xl object-cover transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
             />
             <div className="flex-1 prose p-8 md:order-first">
               <Markdown>{data.second_text}</Markdown>

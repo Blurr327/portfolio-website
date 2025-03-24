@@ -21,7 +21,7 @@ export default function TagPicker({
       >
         <p className="text-sm md:text-base">Catégorie</p>
         <div className="text-zinc-500 px-2 py-1 absolute rounded-full top-0 left-0 bottom-0 pl-[110%] w-[max-content] max-w-[85vw] md:max-w-[60vw] lg:max-w-[45vw] flex justify-between items-center transition hover:text-[#31393C]">
-          <p className="text-sm text-nowrap md:text-base flex justify-center items-center p-4">
+          <p className="text-sm md:text-base flex justify-center items-center p-4">
             {currentTagText}
           </p>
         </div>
