@@ -1,7 +1,7 @@
 ---
 tags:
-  - tag_name: tag1
-  - tag_name: tag2
-  - tag_name: tag3
-  - tag_name: tag4
+  - tag_name: Mathématiques
+  - tag_name: Informatique
+  - tag_name: Cryptographie
+  - tag_name: Sécurité
 ---

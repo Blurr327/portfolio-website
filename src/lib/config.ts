@@ -3,7 +3,6 @@ import matter from "gray-matter";
 
 const tabLabelsSchema = z.object({
   home: z.string(),
-  join: z.string(),
   blog: z.string(),
   contact: z.string(),
 });

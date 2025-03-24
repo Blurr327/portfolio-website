@@ -16,7 +16,7 @@ export default function ArticlePage({ article }: { article: ArticleWithSlug }) {
       <div className="md:sticky md:top-0 md:col-span-1 h-[max-content] md:flex md:flex-col">
         <p className="text-base text-zinc-500">{formatDate(article.date)}</p>
         <h1 className="font-bold tracking-tight text-zinc-900 text-4xl">
-          {article.title}
+          {article.title.substring(0, 20) + "..."}
         </h1>
         {/* Mobile Image */}
         <Image

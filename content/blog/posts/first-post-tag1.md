@@ -1,27 +1,103 @@
 ---
 layout: blog
-title: First post tag1 with video
-date: 2024-10-08T19:04:00.000Z
-video: https://www.youtube.com/watch?v=biCdvX1uwAU
+title: Optimisations de RSA OAEP avec le CRT et la fonction de Carmichael
+date: 2025-03-24T19:04:00.000Z
+video:
 tags:
-  - tag1
+  - Cryptographie
+  - Informatique
+  - Mathématique
 ---
-Lorem ipsum odor amet, consectetuer adipiscing elit. Dignissim mus euismod pretium imperdiet arcu mattis eros. Consequat molestie quis maecenas sodales imperdiet dis nulla. Sed cras purus lobortis convallis eu finibus habitant. Facilisis ex nascetur tincidunt, enim maecenas porta. Maximus rhoncus convallis auctor mus vulputate a odio justo. Rutrum pulvinar fames integer aenean eu.
 
-Leo porta montes sapien vivamus nostra duis ultricies ad. Ullamcorper amet turpis gravida facilisis integer iaculis. Id at ornare; morbi integer sagittis cras mollis! Ut maximus ultrices leo placerat velit dapibus sollicitudin. Luctus taciti justo convallis adipiscing et gravida ridiculus. Tortor consectetur diam leo conubia donec taciti. Eros donec purus feugiat donec sodales eleifend facilisis viverra. Sociosqu enim venenatis platea blandit vehicula quis.
+RSA (Rivest-Shamir-Adleman) est l'un des systèmes de chiffrement asymétrique les plus utilisés aujourd'hui. Cependant, son implémentation peut être optimisée de plusieurs manières pour améliorer ses performances sans compromettre sa sécurité. Parmi ces optimisations, nous explorerons l'utilisation du **théorème des restes chinois (CRT)** et de la **fonction indicatrice de Carmichael**.
 
-Nisl tellus lacinia lorem posuere posuere ac dis nibh. Tellus nullam justo euismod efficitur sollicitudin fringilla. Quam ac felis curabitur ridiculus semper tempor sagittis purus litora. Malesuada integer maecenas diam facilisis montes class consectetur risus. Neque nulla taciti rutrum ridiculus nullam risus ultricies. Apotenti orci libero litora blandit; dictum tempus. Facilisis laoreet facilisis sed auctor ut egestas egestas platea. Lacinia facilisis dis sit; donec eleifend praesent.
+## 1. Rappel sur RSA OAEP
 
-Leo tincidunt parturient cursus metus nullam nostra senectus dictumst ex. Nibh ridiculus taciti curae netus felis fringilla diam. Natoque varius sagittis egestas donec vestibulum. In platea viverra ultricies fames risus metus. Posuere lobortis parturient consectetur, vehicula lacinia curae elit. In fringilla dui dis ante euismod laoreet at facilisis volutpat? Ultricies est vestibulum inceptos morbi turpis eros porttitor. Penatibus varius ridiculus finibus mauris quam; augue accumsan habitant. Facilisi curae tortor at vitae pellentesque himenaeos himenaeos.
+Le schéma RSA avec **Optimal Asymmetric Encryption Padding (OAEP)** est utilisé pour améliorer la sécurité du chiffrement RSA brut en ajoutant un schéma de masquage afin d'éviter certaines attaques (ex : attaque de texte chiffré choisi). Le chiffrement se fait de la manière suivante :
 
-Curae libero vitae velit amet nulla mattis tempor sit aenean. Etiam sollicitudin ultrices sed id; nostra eleifend. Pretium pulvinar inceptos semper, conubia condimentum inceptos rhoncus. Ligula mollis bibendum est felis dapibus pellentesque varius hendrerit fermentum. Tellus rhoncus et sapien per senectus. Gravida eleifend tellus velit scelerisque amet scelerisque. Habitant molestie malesuada torquent dapibus sit integer suspendisse torquent? Tristique euismod per montes hendrerit penatibus augue id platea.
+- Génération de la clé RSA :
 
-Vestibulum ornare purus neque nam praesent nisl. Pharetra cras taciti vestibulum aliquam primis conubia commodo? Eleifend fusce rhoncus efficitur sem vehicula mus. Consectetur eget volutpat gravida congue iaculis. Vitae finibus platea montes justo semper velit nostra? Nostra quisque habitant netus nunc condimentum mauris hendrerit habitasse. Maecenas taciti fames mi justo mauris litora. Sociosqu sagittis at porttitor; accumsan curabitur mi. Aliquet eros sollicitudin penatibus ut nisl accumsan dui.
+  - Choix de deux nombres premiers \( p \) et \( q \)
+  - Calcul du module \( N = p \times q \)
+  - Calcul de l'indicatrice d'Euler :
+    \[
+    \varphi(N) = (p - 1) \times (q - 1)
+    \]
+  - Choix d'un exposant public \( e \)
+  - Calcul de l'exposant privé \( d \) tel que :
+    \[
+    d \times e \equiv 1 \mod \varphi(N)
+    \]
 
-Facilisi vestibulum aenean amet porta urna felis. Leo litora phasellus arcu tempus; mi egestas pretium a integer? Maecenas mollis facilisi dis torquent consequat. Laoreet convallis diam finibus iaculis scelerisque placerat. Facilisi tellus platea arcu mus erat netus. Feugiat natoque pharetra sapien; nunc curae vulputate laoreet accumsan libero. Pulvinar condimentum arcu eleifend maecenas accumsan ridiculus. Pellentesque libero faucibus imperdiet class enim lacus.
+- Chiffrement :
+  \[
+  C = M^e \mod N
+  \]
+- Déchiffrement :
+  \[
+  M = C^d \mod N
+  \]
 
-Elementum sodales ornare feugiat lobortis ornare, hac dis pharetra. Neque scelerisque sagittis elit iaculis dignissim. Platea efficitur vulputate nec ad morbi torquent. Sociosqu mattis quisque sapien, parturient at placerat habitasse. Ornare quisque scelerisque sodales eget nascetur commodo cubilia sem. Tempor nisl facilisis ut metus condimentum eros suscipit nibh. Maecenas venenatis nisl ante netus pharetra pharetra. Sit metus scelerisque malesuada quam aptent mi phasellus magnis? Bibendum egestas lacus nisi turpis nam integer tortor integer donec. Taciti quam vivamus interdum hendrerit lectus condimentum.
+L'opération d'exponentiation modulaire avec un grand exposant \( d \) est coûteuse en calcul, ce qui justifie l'utilisation d'optimisations.
 
-Sollicitudin inceptos hac dolor, sit adipiscing fringilla elit. Tristique inceptos non mauris euismod; nibh proin. Penatibus fusce pretium taciti, pharetra vehicula proin. Aenean vitae maecenas senectus adipiscing placerat. Erat sagittis nam torquent eleifend vivamus nullam habitasse ipsum? Eleifend taciti phasellus feugiat bibendum scelerisque placerat. Finibus quisque nullam turpis consectetur pulvinar fames luctus est amet. Netus nisl risus aliquam facilisis senectus ipsum natoque.
+---
 
-Fames rutrum ullamcorper ut risus elementum adipiscing. Eleifend nunc rutrum auctor pretium lobortis phasellus. Mollis placerat justo nibh suscipit cubilia. Integer ut lacinia in augue aenean justo tincidunt tortor. Lacus nec felis imperdiet fusce vitae vel. Fusce magnis nec potenti eros vehicula aliquam urna.
+## 2. Optimisation avec le théorème des restes chinois (CRT)
+
+Le **théorème des restes chinois** permet d'accélérer le déchiffrement en réduisant la taille des calculs modulaires.
+Plutôt que d'exécuter l'exponentiation modulaire directement sur \( N \), on la réalise séparément sur \( p \) et \( q \) :
+
+- Calcul des clés privées réduites :
+  \[
+  d_p = d \mod (p - 1)
+  \]
+  \[
+  d_q = d \mod (q - 1)
+  \]
+- Calcul des résultats intermédiaires :
+  \[
+  M_p = C^{d_p} \mod p
+  \]
+  \[
+  M_q = C^{d_q} \mod q
+  \]
+- Reconstruction du message avec l'algorithme de recomposition de **Garner** :
+  \[
+  M = M_q + q \times ( (M_p - M_q) \times q^{-1} \mod p )
+  \]
+
+Cette technique réduit le coût du déchiffrement d'un facteur **4×** environ, car les calculs sont réalisés sur des nombres deux fois plus petits.
+
+---
+
+## 3. Utilisation de la fonction indicatrice de Carmichael
+
+L'indicatrice de **Carmichael** \( \lambda(N) \) est une alternative à \( \varphi(N) \) qui permet de minimiser l'exposant privé \( d \). Elle est définie par :
+
+\[
+\lambda(N) = \text{PPCM}(p - 1, q - 1)
+\]
+
+L'intérêt est que \( \lambda(N) \) est plus petit que \( \varphi(N) \), ce qui réduit la taille de \( d \) et accélère le déchiffrement.
+
+En remplaçant \( \varphi(N) \) par \( \lambda(N) \) dans le calcul de \( d \), nous obtenons :
+
+\[
+d = e^{-1} \mod \lambda(N)
+\]
+
+L'utilisation conjointe de **CRT et Carmichael** permet donc d'optimiser RSA en réduisant à la fois la taille des calculs et leur complexité.
+
+---
+
+## 4. Conclusion
+
+Ces optimisations sont particulièrement utiles pour les applications embarquées ou nécessitant un déchiffrement rapide (ex : signatures numériques). Elles permettent de :
+
+✅ Réduire drastiquement le temps de déchiffrement avec **CRT**
+
+✅ Minimiser l'exposant privé avec **Carmichael**, accélérant les calculs
+
+✅ Maintenir la sécurité du schéma RSA tout en améliorant ses performances
+
+Ces techniques sont intégrées dans les implémentations modernes de RSA pour garantir un chiffrement efficace et sécurisé.
