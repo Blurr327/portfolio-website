@@ -104,7 +104,7 @@ export default function Header({
     <header className="top-0 w-full flex justify-between items-center md:px-12 border-b border-b-zinc-500">
       <Link href={"/"}>
         <Image
-          src="/img/sig.png"
+          src="/portfolio-website/img/sig.png"
           alt="Initials"
           className="object-cover mx-4 my-2"
           width="100"
