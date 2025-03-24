@@ -1,5 +1,4 @@
 import Container from "@/components/Container";
-import Carousel from "@/components/Carousel";
 import PostsList from "@/app/blog/PostsList";
 import Pagination from "@/components/Pagination";
 import TagPicker from "@/components/TagPicker";
@@ -28,14 +27,6 @@ export default async function FilteredPostsPage({
   ]);
 
   const pageCount = await getBlogPagesCount(filter);
-
-  const images: string[] = (
-    await getArticles(
-      (article) => filter(article) && article.thumbnail !== undefined
-    )
-  )
-    .slice(0, 4)
-    .map((article) => "/portfolio-website/" + article.thumbnail);
 
   const blogConfig = await getBlogConfig();
 
