@@ -15,7 +15,7 @@ export const PostComponent = async ({
     <article className="md:grid md:grid-cols-4">
       <Card className="md:col-span-3 md:ml-12 self-center">
         <Image
-          src={"/" + article.thumbnail}
+          src={"/portfolio-website" + article.thumbnail}
           alt="Thumbnail"
           className="mt-1 md:hidden flex justify-center w-full h-full object-cover rounded-3xl p-4 relative z-10 order-first items-center text-sm text-zinc-400 pl-3.5 mb-4"
           width="50"
@@ -35,7 +35,7 @@ export const PostComponent = async ({
       </Card>
       <div className="relative w-full h-full order-first">
         <Image
-          src={"/" + article.thumbnail}
+          src={"/portfolio-website" + article.thumbnail}
           alt="Thumbnail"
           className="mt-1 h-full w-full hidden object-cover md:flex md:items-center md:justify-center relative z-10 mb-auto text-sm text-zinc-400 rounded-3xl"
           height="200"
