@@ -20,7 +20,7 @@ export default function ArticlePage({ article }: { article: ArticleWithSlug }) {
         </h1>
         {/* Mobile Image */}
         <Image
-          src={article.thumbnail}
+          src={"/" + article.thumbnail}
           alt="Thumbnail"
           className="mt-1 md:hidden object-cover w-full rounded-3xl border border-black flex items-center justify-center relative z-10 text-sm text-zinc-400"
           width="200"

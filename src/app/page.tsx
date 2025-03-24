@@ -13,7 +13,7 @@ export default async function Home() {
 
   const images: string[] = articles
     .filter((article) => article.thumbnail !== undefined)
-    .map((article) => article.thumbnail);
+    .map((article) => "/" + article.thumbnail);
 
   return (
     <>
